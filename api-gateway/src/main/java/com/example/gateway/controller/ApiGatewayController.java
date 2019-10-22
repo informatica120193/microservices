@@ -14,27 +14,28 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class ApiGatewayController {
     
-    @Value("url.servicios")
-    private String urlServicios;
+    
+    private static String urlServicios = "http://localhost";
     private RestTemplate restTemplate;
     
     @GetMapping("/operacion")
     public Double invocarOperacion(@RequestParam("operacion") String operacion, @RequestParam("numero1") Double numero1, @RequestParam("numero2") Double numero2){
         restTemplate = new RestTemplate();
         switch(operacion){
-            case "+":
+            case "s":
                 urlServicios = String.format("%s:%s?numero1=%s&numero2=%s", urlServicios, "8081/sumar",numero1.toString(),numero2.toString());
                 break;
-            case "-":
+            case "r":
                 urlServicios = String.format("%s:%s?numero1=%s&numero2=%s", urlServicios, "8082/restar",numero1.toString(),numero2.toString());
                 break;
-            case "*":
+            case "m":
                 urlServicios = String.format("%s:%s?numero1=%s&numero2=%s", urlServicios, "8083/multiplicar",numero1.toString(),numero2.toString());
                 break;
-            case "/":
+            case "d":
                 urlServicios = String.format("%s:%s?numero1=%s&numero2=%s", urlServicios, "8084/dividir",numero1.toString(),numero2.toString());
                 break;
         }
+        System.out.println("urlServicios : " + urlServicios);
         return restTemplate.getForObject(urlServicios, Double.class);
     }
 }
