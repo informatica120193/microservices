@@ -6,6 +6,7 @@
 package com.example.gateway.controller;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,12 +15,13 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class ApiGatewayController {
     
-    
-    private static String urlServicios = "http://localhost";
+
     private RestTemplate restTemplate;
-    
+
+    @CrossOrigin(origins = "*")
     @GetMapping("/operacion")
     public Double invocarOperacion(@RequestParam("operacion") String operacion, @RequestParam("numero1") Double numero1, @RequestParam("numero2") Double numero2){
+        String urlServicios = "http://localhost";
         restTemplate = new RestTemplate();
         switch(operacion){
             case "s":

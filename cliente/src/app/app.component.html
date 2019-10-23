@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculadora basica</title>
+</head>
+<body class="center">
+<h1>Calculadora Basica</h1>
+<form name="f1"><br>
+<input type="text" name="txtcaja1" [(ngModel)]="txtcaja1">
+<br>
+<input type="text" name="txtcaja2" [(ngModel)]="txtcaja2">
+
+<br>
+<input type="button" class="clear" (click)="txtcaja2='0'" value="CE">
+<input type="button-large" class="clear" (click)="limpiar()" value="C">
+ 
+<input type="button" class="arit" (click)="arit('/')" value="÷">
+<br>
+<input type="button" (click)="escribir(7)" value="7">
+<input type="button" (click)="escribir(8)" value="8">
+<input type="button" (click)="escribir(9)" value="9">
+<input type="button" class="arit" (click)="arit('*')" value="×">
+<br>
+<input type="button" (click)="escribir(4)" value="4">
+<input type="button" (click)="escribir(5)" value="5">
+<input type="button" (click)="escribir(6)" value="6">
+<input type="button" class="arit" (click)="arit('-')" value="-">
+<br>
+<input type="button" (click)="escribir(1)" value="1">
+<input type="button" (click)="escribir(2)" value="2">
+<input type="button" (click)="escribir(3)" value="3">
+<input type="button" class="arit" (click)="arit('+')" value="+">
+<br>
+<input type="button" (click)="escribir(0)" value="0">
+<input type="button" (click)="escribir('.')" value=".">
+<input type="button-large" class="igual" (click)="calcular()" value="=">
+<br>
+</form>
+
