@@ -18,6 +18,13 @@ public class ApiGatewayController {
 
     private RestTemplate restTemplate;
 
+    /**
+     * Recurso que se encarga de hacer el redireccionamiento de la peticion seguin el parametro que le llega en el request
+     * @param operacion
+     * @param numero1
+     * @param numero2
+     * @return
+     */
     @CrossOrigin(origins = "*")
     @GetMapping("/operacion")
     public Double invocarOperacion(@RequestParam("operacion") String operacion, @RequestParam("numero1") Double numero1, @RequestParam("numero2") Double numero2){
