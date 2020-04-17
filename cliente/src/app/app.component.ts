@@ -15,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 	valor2;
 	unum;
 	borrar: boolean;
-	urlServicio = "http://localhost:8090";
+	urlServicio = "http://192.168.0.2:8090";
 
 	constructor(private http: HttpClient) { }
 
