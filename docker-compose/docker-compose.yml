@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  suma:
+    image: jaatuestam/suma:0.0.1
+    ports:
+      - '8081:8081'
+  resta: 
+    image: felipenarino/resta:0.0.1
+    ports:
+      - '8082:8082'
+  multiplicacion:
+    image: felipenarino/multiplicacion:0.0.1
+    ports:
+      - '8083:8083'
+  division: 
+    image: jaatuestam/division:0.0.1
+    ports:
+      - '8084:8084'
+  gateway:
+    image: jaatuestam/gateway:0.0.1
+    ports:
+      - '8090:8090'
+    links:
+      - suma
+  client:
+    image: felipenarino/client:0.0.1
+    ports:
+      - '80:80'

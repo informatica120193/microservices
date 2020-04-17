@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class ApiGatewayController {
@@ -27,8 +31,8 @@ public class ApiGatewayController {
      */
     @CrossOrigin(origins = "*")
     @GetMapping("/operacion")
-    public Double invocarOperacion(@RequestParam("operacion") String operacion, @RequestParam("numero1") Double numero1, @RequestParam("numero2") Double numero2){
-        String urlServicios = "http://localhost";
+    public Double invocarOperacion(@RequestParam("operacion") String operacion, @RequestParam("numero1") Double numero1, @RequestParam("numero2") Double numero2, HttpServletRequest request){
+        String urlServicios = "http://"+request.getRemoteAddr() ;
         restTemplate = new RestTemplate();
         switch(operacion){
             case "s":
