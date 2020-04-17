@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {environment} from '../environments/environment';
 
 @Component({
 	selector: 'app-root',
@@ -15,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 	valor2;
 	unum;
 	borrar: boolean;
-	urlServicio = "http://localhost:8090";
+	urlServicio = `http://0.0.0.0:8090`;
 
 	constructor(private http: HttpClient) { }
 
@@ -97,6 +98,7 @@ import { HttpClient } from '@angular/common/http';
 				break;
 		}
 		const url = `${this.urlServicio}/operacion?operacion=${oper}&numero1=${this.valor1}&numero2=${this.valor2}`;
+		console.log('URL :' , url);
 		this.http.get(url).subscribe((data: string) => {
 			this.txtcaja2 = data;
 			this.valor1 = data;
